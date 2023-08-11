@@ -10,6 +10,7 @@ int main(void)
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 
 	int i;
+
 	for (i = 0; i < 26; i++)
 	{
 		if ((i == 16) | (i == 4))
