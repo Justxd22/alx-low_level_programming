@@ -9,7 +9,8 @@ int main(void)
 {
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 
-	for (int i = 0; i < 26; i++)
+	int i;
+	for (i = 0; i < 26; i++)
 	{
 		if (i == 16 | i == 4)
 		{
@@ -17,6 +18,6 @@ int main(void)
 		}
 		putchar(alphabet[i]);
 	}
-	putchar("\n");
+	putchar('\n');
 	return (0);
 }
