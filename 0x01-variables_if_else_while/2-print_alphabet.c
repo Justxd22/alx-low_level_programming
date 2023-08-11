@@ -9,7 +9,8 @@ int main(void)
 {
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 
-	for (int i = 0; i < 26; i++)
+        int i = 0;
+	for (i; i < 26; i++)
 	{
 		putchar(alphabet[i]);
 	}
