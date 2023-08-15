@@ -4,3 +4,11 @@
 int _putchar(char c);
 
 #endif /* _PUTCHAR_H */
+
+
+#ifndef ALPHABET_H_1
+#define ALPHABET_H_1
+
+void print_alphabet(void);
+
+#endif
