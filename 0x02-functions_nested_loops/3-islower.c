@@ -5,9 +5,10 @@
 /**
  * _islower - Entry point
  * Function to - print alphabets
+ * @c: The character to be checked.
  * Return: 0/1
  */
 int _islower(int c)
 {
-	return islower(c);
+	return (islower(c));
 }
