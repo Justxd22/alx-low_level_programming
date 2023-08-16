@@ -3,7 +3,7 @@
 /**
  * print_sign - main function
  *
- * @c: character to compare
+ * @n: character to compare
  *
  * Return: 1 if > 0, 0 if < 0
  *
@@ -20,7 +20,7 @@ int print_sign(int n)
 		_putchar('0');
 		return (0);
 	}
-	else 
+	else
 	{
 		_putchar('-');
 		return (-1);
