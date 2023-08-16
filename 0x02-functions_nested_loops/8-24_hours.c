@@ -4,7 +4,7 @@
 /**
  * jack_bauer - main function
  *
- * 
+ *
  *
  * no Return
  *
