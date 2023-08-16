@@ -30,6 +30,6 @@ int _islower(int c);
 #ifndef IS_ALPHA
 #define IS_ALPHA
 
-int _isalpha(int c)
+int _isalpha(int c);
 
 #endif
