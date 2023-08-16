@@ -40,3 +40,47 @@ int _isalpha(int c);
 int print_sign(int n);
 
 #endif
+
+
+#ifndef ABS
+#define ABS
+
+int _abs(int);
+
+#endif
+
+#ifndef LAST
+#define LAST
+
+int print_last_digit(int);
+
+#endif
+
+
+#ifndef JACK
+#define JACK
+
+void jack_bauer(void);
+
+#endif
+
+#ifndef TABLE
+#define TABLE
+
+void times_table(void);
+
+#endif
+
+#ifndef ADD
+#define ADD
+
+int add(int, int);
+
+#endif
+
+#ifndef PPNE
+#define PPNE
+
+void print_to_98(int n);
+
+#endif
