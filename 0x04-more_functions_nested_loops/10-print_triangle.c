@@ -6,7 +6,7 @@
  * @s: tri size
  * No Return
 **/
-void print_triangle(int size)
+void print_triangle(int s)
 {
 	int i;
 	int j;
