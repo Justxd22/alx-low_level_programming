@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	unsigned long long n = 612852475143;
+	unsigned long long n = 612852475143LL;
 	int k = 2;
 
 	while (n != k)
@@ -23,6 +23,6 @@ int main(void)
 			k++;
 		}
 	}
-	printf("%lu\n", n);
+	printf("%llu\n", n);
 	return (0);
 }
