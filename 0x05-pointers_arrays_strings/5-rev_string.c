@@ -10,15 +10,17 @@
 void rev_string(char *s)
 {
 	char *ss;
+        char j;
         int i;
 
         if (strlen(s) != 0)
         {
         for (i = strlen(s) - 1; i >= 0; i--)
         {
-                strcat(ss, s[i]);
+		j = s[i];
+                strcat(ss, j);
         }
-	s = ss
+	*s = ss;
         }
 
 }
