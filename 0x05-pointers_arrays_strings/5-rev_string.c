@@ -10,17 +10,16 @@
 void rev_string(char *s)
 {
 	char *ss;
-        char j;
-        int i;
+	int i, j;
+	int len = strlen(s);
 
-        if (strlen(s) != 0)
-        {
-        for (i = strlen(s) - 1; i >= 0; i--)
-        {
-		j = s[i];
-                strcat(ss, j);
-        }
-	*s = ss;
-        }
-
+	if (len != 0)
+	{
+		for (i = len - 1, j = 0; i >= 0; i--, j++)
+		{
+			ss[j] = s[i];
+		}
+		ss[j] = '\0';  // Null-terminate the reversed string
+		strcpy(s, ss);  // Copy the reversed string back to s
+	}
 }
