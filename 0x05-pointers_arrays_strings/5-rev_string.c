@@ -19,7 +19,7 @@ void rev_string(char *s)
 		{
 			ss[j] = s[i];
 		}
-		ss[j] = '\0';  // Null-terminate the reversed string
-		strcpy(s, ss);  // Copy the reversed string back to s
+		ss[j] = '\0';
+		strcpy(s, ss);
 	}
 }
