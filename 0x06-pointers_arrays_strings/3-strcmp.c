@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * _strcmp - copy two strings with X n
- * @dest: string to compare
- * @src: string to compare
- * Return: dest
+ * _strcmp - compare two strings
+ * @s1: string to compare
+ * @s2: string to compare
+ * Return: result
  */
-char *_strcmp(char *dest, char *src)
+int _strcmp(char *s1, char *s2)
 {
 	int j;
 
-	while (dest[j] == src[j] && src[j] != '\0')
+	while (s1[j] == s2[j] && s2[j] != '\0')
 	{
 		j++;
 	}
 
-	return (dest[j] - src[j]);
+	return (s1[j] - s2[j]);
 }
