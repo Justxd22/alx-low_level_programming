@@ -27,5 +27,9 @@ char *rot13(char *s)
 			}
 		}
 	}
+	if (s)
+	{
+		;
+	}
 	return (s);
 }
