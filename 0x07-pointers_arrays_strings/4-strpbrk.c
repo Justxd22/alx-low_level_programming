@@ -3,23 +3,26 @@
 /**
  * _strpbrk - searches a string for any of a set of bytes
  * @s: string to search
- * @accept: character to find
- * Return: s
+ * @accept: bytes to find
+ * Return: s as pointer
  */
 char *_strpbrk(char *s, char *accept)
 {
-	unsigned int x;
+	unsigned int x, y;
 
-	for (x = 0; s[x] != '\0'; x++)
+	for (x = 0; *(s + x); x++)
 	{
-		if (s[x] == c)
+		for (y = 0; *(accept + y); y++)
 		{
-			return (s + x);
+			if (*(s + x) == *(accept + y))
+			{
+				break
+			}
 		}
-	}
-	if (s[x] == c)
-	{
-		return (s + x);
+		if (*(accept + y) != '\0')
+		{
+			return (s+x);
+		}
 	}
 	return (0);
 }
