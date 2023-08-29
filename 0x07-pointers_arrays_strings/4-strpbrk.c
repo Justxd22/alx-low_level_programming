@@ -16,7 +16,7 @@ char *_strpbrk(char *s, char *accept)
 		{
 			if (*(s + x) == *(accept + y))
 			{
-				break
+				break;
 			}
 		}
 		if (*(accept + y) != '\0')
