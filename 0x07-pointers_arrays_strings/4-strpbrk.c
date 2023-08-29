@@ -21,7 +21,7 @@ char *_strpbrk(char *s, char *accept)
 		}
 		if (*(accept + y) != '\0')
 		{
-			return (s+x);
+			return (s + x);
 		}
 	}
 	return (0);
