@@ -8,18 +8,12 @@
  */
 void print_diagsums(int *a, int size);
 {
-	unsigned int x;
+	int x, s1, s2;
 
-	for (x = 0; s[x] != '\0'; x++)
+	for (x = 0; x < size; x++)
 	{
-		if (s[x] == c)
-		{
-			return (s + x);
-		}
+		s1 += a[(size * x) + x];
+		s2 += a[(size - 1) + (x*(size - 1))];
 	}
-	if (s[x] == c)
-	{
-		return (s + x);
-	}
-	return (0);
+	printf("%d, %d", s1, s2);
 }
