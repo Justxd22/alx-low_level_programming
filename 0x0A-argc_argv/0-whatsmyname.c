@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * main - A FUNCTION
@@ -8,6 +8,12 @@
  */
 int main(int argc, char *argv[])
 {
-	printf("%s", argv[0]);
+	char *ss = argv[0];
+
+	while (*ss != '\0')
+	{
+		_putchar(*ss);
+		ss++;
+	}
         return (0);
 }
