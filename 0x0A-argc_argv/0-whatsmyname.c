@@ -15,5 +15,5 @@ int main(int __attribute__((unused)) argc, char *argv[])
 		_putchar(*ss);
 		ss++;
 	}
-        return (0);
+	return (0);
 }
