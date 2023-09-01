@@ -1,4 +1,4 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
  * main - A FUNCTION
@@ -6,8 +6,8 @@
  * @argv: char array of passed vars
  * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int argc, char __attribute__((unused)) *argv[])
 {
-	_putchar(argc);
-        return (0);
+	printf("%d\n", argc);
+	return (0);
 }
