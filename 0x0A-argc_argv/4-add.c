@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * main - A FUNCTION
@@ -9,16 +10,17 @@
  */
 int main(int argc, char *argv[])
 {
-	int x;
+	int x, ss = 0;
 
-	if (argc < 3)
+	for (x = 1; x < argc; x++)
 	{
-		printf("Error");
+		if (!isdigit(*argv[x]))
+		{
+			printf("Error");
+			return (0);
+		}
+		ss += atoi(argv[x]);
 	}
-	else
-	{
-		x = atoi(argv[1]) + atoi(argv[2]);
-		printf("%d", x);
-	}
+	printf("%d\n", ss);
 	return (0);
 }
