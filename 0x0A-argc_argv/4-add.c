@@ -21,11 +21,6 @@ int main(int argc, char *argv[])
 		}
 		ss += atoi(argv[x]);
 	}
-	if (ss == 0)
-	{
-		printf("0\n");
-		return (1);
-	}
 	printf("%d\n", ss);
 	return (0);
 }
