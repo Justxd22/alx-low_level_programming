@@ -10,14 +10,17 @@
  */
 int main(int argc, char *argv[])
 {
-	int x, ss = 0;
+	int x, y, ss = 0;
 
 	for (x = 1; x < argc; x++)
 	{
-		if (!isdigit(*argv[x]))
+		for (y = 0; argv[x][y] != '\0'; y++)
 		{
-			printf("Error\n");
-			return (1);
+			if (!isdigit(argv[x][y]))
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
 		ss += atoi(argv[x]);
 	}
