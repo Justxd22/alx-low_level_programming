@@ -2,28 +2,33 @@
 #include <stdlib.h>
 
 /**
- * create_array - create array of size x init with c
- * @size: size of array to create
- * @c: init char
+ * alloc_grid - alloc mem for a hxw array
+ * @width: size of array to create
+ * @height: size of array to create
  * Return: NULL/pointer
  */
-char *create_array(unsigned int size, char c)
+int **alloc_grid(int width, int height)
 {
-	char *a;
-	unsigned int x;
+	int **a;
+	int x, y;
 
-	if (size == 0)
+	if (width <= 0 || height <= 0)
 	{
 		return (NULL);
 	}
-	a = malloc(size * sizeof(char));
+
+	a = malloc(height * sizeof(int));
 	if (a == NULL)
 	{
 		return (NULL);
 	}
-	for (x = 0; x < size; x++)
+	for (x = 0; x < height; x++)
 	{
-		a[x] = c;
+		a[x] = malloc(width * sizeof(int));
+		if (a[x] == NULL)
+			return (NULL);
+		for (y = 0; y < width; y++)
+			a[x][y] = 0;
 	}
 	return (a);
 }
