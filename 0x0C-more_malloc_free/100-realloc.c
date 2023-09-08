@@ -1,6 +1,24 @@
 #include "main.h"
 #include <stdlib.h>
 
+
+/**
+ * _memcpy - cp mem
+ * @to: to
+ * @from: from
+ * @n: size
+ * Return: res
+ */
+char *_memcpy(char *to, char *from, unsigned int n)
+{
+	unsigned int i;
+
+	for (i = 0; i < n; i++)
+		to[i] = from[i];
+	return (to);
+}
+
+
 /**
  * _realloc - reallocates a memory block
  * @old_size: from
@@ -9,22 +27,31 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	int *a;
-	int x, size = 0;
+	void *ptr0;
 
-	if (min > max)
-		return (NULL);
+	if (old_size == new_size)
+		return (ptr);
 
-	size = max - min;
-	a = malloc((size + 1) * sizeof(int));
-	if (a == NULL)
+	if (ptr == NULL)
 	{
-		return (NULL);
+		ptr0 = malloc(new_size);
+		if (ptr0 == 0)
+			return (0);
+		free(ptr);
+		return (ptr0);
 	}
 
-	for (x = 0; x <= max - min; x++)
+	if (new_size == 0 && ptr != NULL)
 	{
-		a[x] = min + x;
+		free(ptr);
+		return (0);
 	}
-	return (a);
+
+	ptr0 = malloc(new_size);
+	if (ptr0 == 0)
+		return (0);
+
+	_memcpy(ptr0, ptr, old_size);
+	free(ptr);
+	return (ptr0);
 }

@@ -38,6 +38,27 @@ int countDigits(int num)
 	return (count);
 }
 
+/**
+ * strToBigInt - convert a string to a big integer
+ * @str: the string
+ * Return: the converted integer
+ */
+unsigned long strToBigInt(const char *str) {
+    unsigned long result = 0;
+	int i;
+
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= '0' && str[i] <= '9') {
+            result = result * 10 + (str[i] - '0');
+        } else {
+            printf("Error\n");
+            exit(98);
+        }
+    }
+
+    return result;
+}
+
 
 /**
  * main - multiplies two positive numbers
@@ -48,7 +69,7 @@ int countDigits(int num)
 int main(int argc, char *argv[])
 {
 	char *a;
-	int n1, n2, r, len, i, y = 0;
+	unsigned long n1, n2, r, len, i, y = 0;
 
 	if (argc != 3 || !digi(argv[1]) || !digi(argv[2]))
 	{
@@ -56,8 +77,8 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	n1 = atoi(argv[1]);
-	n2 = atoi(argv[2]);
+	n1 = strToBigInt(argv[1]);
+	n2 = strToBigInt(argv[2]);
 
 	r = n1 * n2;
 	len = countDigits(r);
