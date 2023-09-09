@@ -69,7 +69,7 @@ unsigned long strToBigInt(const char *str) {
 int main(int argc, char *argv[])
 {
 	char *a;
-	unsigned long n1, n2, r, len, i, y = 0;
+	int n1, n2, r, len, i, y = 0;
 
 	if (argc != 3 || !digi(argv[1]) || !digi(argv[2]))
 	{
@@ -77,8 +77,8 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	n1 = strToBigInt(argv[1]);
-	n2 = strToBigInt(argv[2]);
+	n1 = atoi(argv[1]);
+	n2 = atoi(argv[2]);
 
 	r = n1 * n2;
 	len = countDigits(r);

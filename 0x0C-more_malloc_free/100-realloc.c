@@ -21,7 +21,7 @@ char *_memcpy(char *to, char *from, unsigned int n)
 
 /**
  * _realloc - reallocates a memory block
- * ptr: pointer
+ * @ptr: pointer
  * @old_size: from
  * @new_size: to
  * Return: NULL/pointer
