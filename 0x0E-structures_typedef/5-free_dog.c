@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "dog.h"
+#include <stddef.h>
 
 /**
  * free_dog - free dog struct
