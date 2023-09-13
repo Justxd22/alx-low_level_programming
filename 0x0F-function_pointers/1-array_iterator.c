@@ -11,7 +11,7 @@ void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	size_t x;
 
-	if (action == NULL || size == NULL || array == NULL)
+	if (action == NULL || size == 0 || array == NULL)
 		return;
 
 	for (x = 0; x < size; x++)
