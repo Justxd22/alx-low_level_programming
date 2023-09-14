@@ -10,23 +10,23 @@
 int main(int argc, char *argv[])
 {
 	int num_bytes = atoi(argv[1]), i;
-	unsigned char *ptr = (unsigned char *)main;
+	char *ptr = (char *)main;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
-		exit (1);
+		exit(1);
 	}
 
 	if (num_bytes < 0)
 	{
 		printf("Error\n");
-		exit (2);
+		exit(2);
 	}
 
 	for (i = 0; i < num_bytes; i++)
 	{
-		printf("%02x ", ptr[i]);
+		printf("%02x ", ptr[i] & 0xFF);
 		if (i != num_bytes - 1)
 			printf(" ");
 	}
