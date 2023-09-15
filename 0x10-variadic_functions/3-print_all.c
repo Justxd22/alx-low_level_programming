@@ -19,10 +19,6 @@ void print_all(const char * const format, ...)
 
 	while ((c = *p++) != '\0')
 	{
-
-		if (c != 'c' && c != 'i' && c != 'f' && c != 's')
-			continue;
-
 		switch (c)
 		{
 		case 'c':
@@ -37,9 +33,8 @@ void print_all(const char * const format, ...)
 		case 's':
 			s = va_arg(args, char *);
 			if (s == NULL)
-				printf("(nil)");
-			else
-				printf("%s", s);
+				s = "(nil)";
+			printf("%s", s);
 			break;
 		}
 
@@ -47,6 +42,5 @@ void print_all(const char * const format, ...)
 			printf(", ");
 	}
 	va_end(args);
-
 	printf("\n");
 }
