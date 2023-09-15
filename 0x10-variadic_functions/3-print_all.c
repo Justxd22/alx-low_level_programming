@@ -19,8 +19,8 @@ void print_all(const char * const format, ...)
 
 	while ((c = *p++) != '\0')
 	{
-                if (c != 'c' && c != 'i' && c != 'f' && c != 's')
-                        continue;
+		if (c != 'c' && c != 'i' && c != 'f' && c != 's')
+			continue;
 		switch (c)
 		{
 		case 'c':
