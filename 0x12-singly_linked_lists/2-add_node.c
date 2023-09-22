@@ -9,7 +9,7 @@
  */
 list_t *add_node(list_t **head, const char *str)
 {
-	size_t len = 0, slen = 0;
+	size_t len = 0;
 	list_t *n;
 	char *ss;
 
