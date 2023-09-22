@@ -1,25 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
 
-
-/**
- * sslength - mesure str len
- * @ss: string to mesure
- * Return: length
-*/
-int sslength(char *ss)
-{
-	int len = 0;
-
-	if (ss == NULL)
-		return (0);
-	while (*ss++)
-	len++;
-
-	return (len);
-}
-
-
 /**
  * print_list -  print linked lists
  * @h: the list
@@ -35,7 +16,7 @@ size_t print_list(const list_t *h)
 		if (h->str == NULL)
 			printf("[0] (nil)\n");
 		else
-			printf("[%d] %s\n", sslength(h->str), h->str);
+			printf("[%d] %s\n", h->len, h->str);
 		h = h->next;
 		len++;
 	}
