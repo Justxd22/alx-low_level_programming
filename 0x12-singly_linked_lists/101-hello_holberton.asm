@@ -1,14 +1,16 @@
-section .data
-    mistring db "Hello, Holberton",10,0
-
 section .text
-    global main
-    extern printf
+	global main
+	extern printf
+
+section .data
+	mistring db "Hello, Holberton", 0
+	df       db "%s", 10, 0
 
 main:
-    mov rdi, mistring
-    call printf
+	mov esi, mistring
+	mov edi, df
+	mov eax, 0
+	call printf
 
-    mov rax, 60
-    xor rdi, rdi
-    syscall
+	mov eax, 0
+	ret
