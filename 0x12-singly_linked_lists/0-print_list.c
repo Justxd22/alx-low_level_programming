@@ -4,7 +4,7 @@
 
 /**
  * sslength - mesure str len
- * @ss:
+ * @ss: string to mesure
  * Return: length
 */
 int sslength(char *ss)
