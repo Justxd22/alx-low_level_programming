@@ -16,15 +16,13 @@ size_t free_listint_safe(listint_t **h)
 	{
 		if (node->next >= node)
 		{
-			next = node->next;
 			*h = NULL;
-			free(node);
 			break;
 		}
 		len++;
-		next = node;
-		node = node->next;
-		free(next);
+		next = node->next;
+		free(node);
+		node = next;
 	}
 
 	*h = NULL;
