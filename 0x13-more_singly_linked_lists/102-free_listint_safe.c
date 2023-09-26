@@ -14,12 +14,12 @@ size_t free_listint_safe(listint_t **h)
 
 	while (node != NULL)
 	{
+		len++;
 		if (node->next >= node)
 		{
 			*h = NULL;
 			break;
 		}
-		len++;
 		next = node->next;
 		free(node);
 		node = next;
