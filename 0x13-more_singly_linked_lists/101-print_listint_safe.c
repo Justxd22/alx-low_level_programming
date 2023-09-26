@@ -19,7 +19,7 @@ size_t print_listint_safe(const listint_t *head)
 			if (seen[i] == node)
 			{
 				printf("-> [%p] %d\n", (void *)node, node->n);
-				return (-1);
+				return (len);
 			}
 		}
 
