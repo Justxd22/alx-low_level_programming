@@ -9,30 +9,22 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t len = 0, i;
-	listint_t *node = *h, *seen[1024] = {NULL}, *next;
+	size_t len = 0;
+	listint_t *node = *h, *next = NULL;
 
 	while (node != NULL)
 	{
-		for (i = 0; i < len; i++)
+		if (node->next >= node)
 		{
-			if (seen[i] == node)
-			{
-				while (node != NULL)
-				{
-					next = node->next;
-					free(node);
-					node = next;
-				}
-				return (len);
-			}
+			next = node->next;
+			*h = NULL;
+			free(node);
+			break;
 		}
-
-		seen[len++] = node;
-		next = node->next;
-		free(node);
-		node = next;
-
+		len++;
+		next = node;
+		node = node->next;
+		free(next);
 	}
 
 	*h = NULL;
