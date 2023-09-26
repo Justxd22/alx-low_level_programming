@@ -9,15 +9,14 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	int seen[1024] = {0};
+	listint_t *x = head, *y = head;
 
-	while (head != NULL)
+	while (x && y && y->next)
 	{
-		if (seen[head->n] == 1)
-			return (head);
-		
-		seen[head->n] = 1;
-		head = head->next;
+		x = x->next;
+		y = y->next->next;
+		if (x == y)
+			return (x);
 	}
 
 	return (NULL);
