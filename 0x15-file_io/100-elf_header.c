@@ -41,11 +41,8 @@ void display_elf_header(const char *elf_filename)
 exit(98);
 
 	if (rr < (ssize_t)sizeof(Elf64_Ehdr))
-	{
-		dprintf(2, "Error: Not a valid ELF file: %s\n", elf_filename), closeffs(ff);
-		exit(98);
-	}
-
+		dprintf(2, "Error: Not a valid ELF file: %s\n", elf_filename), closeffs(ff),
+exit(98);
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
@@ -61,8 +58,11 @@ elf_header.e_ident[EI_VERSION]);
 [EI_OSABI] == ELFOSABI_SYSV ? "UNIX - System V" : "unknown");
 	printf("  ABI Version:                       %d\n",
 elf_header.e_ident[EI_ABIVERSION]);
-	printf("  Type:                              %d (Executable file)\n",
-elf_header.e_type);
+	printf("  Type:                              %s (%s)\n",
+elf_header.e_type == ET_EXEC ? "EXEC" : (elf_header.e_type == ET_DYN ?
+"DYN" : "Unknown"),
+elf_header.e_type == ET_EXEC ? "Executable file" : (elf_header.e_type ==
+ET_DYN ? "Shared object file" : "Unknown"));
 	printf("  Entry point address:               0x%lx\n", (unsigned long)
 elf_header.e_entry);
 
