@@ -19,6 +19,61 @@ int closeffs(int ff)
 }
 
 
+/**
+ * display_osabi - print OS/ABI
+ * @osabi: var
+ * Return: the right osabi
+ */
+const char *display_osabi(const unsigned char *osabi)
+{
+	switch (osabi[EI_OSABI])
+	{
+	case ELFOSABI_LINUX:
+		return ("UNIX - Linux");
+	case ELFOSABI_NONE:
+		return ("UNIX - System V");
+	case ELFOSABI_HPUX:
+		return ("UNIX - HP-UX");
+	case ELFOSABI_NETBSD:
+		return ("UNIX - NetBSD");
+	case ELFOSABI_SOLARIS:
+		return ("UNIX - Solaris");
+	case ELFOSABI_IRIX:
+		return ("UNIX - IRIX");
+	case ELFOSABI_FREEBSD:
+		return ("UNIX - FreeBSD");
+	case ELFOSABI_TRU64:
+		return ("UNIX - TRU64");
+	case ELFOSABI_ARM:
+		return ("ARM");
+	case ELFOSABI_STANDALONE:
+		return ("Standalone App");
+	default:
+		printf("<unknown: %x>", osabi[EI_OSABI]);
+		return ("");
+	}
+}
+
+
+/**
+ * display_data - print Data
+ * @data: var
+ * Return: the right data
+ */
+const char *display_data(const unsigned char *data)
+{
+	switch (data[EI_DATA])
+	{
+	case ELFDATA2LSB:
+		return ("2's complement, little endian");
+	case ELFDATA2MSB:
+		return ("2's complement, big endian");
+	default:
+		return ("unknown");
+	}
+}
+
+
 
 /**
  * display_elf_header - print elf info
@@ -40,7 +95,7 @@ void display_elf_header(const char *elf_filename)
 		dprintf(2, "Error: Can't read from file %s\n", elf_filename), closeffs(ff),
 exit(98);
 
-	if (rr < (ssize_t)sizeof(Elf64_Ehdr))
+	if (elf_header.e_ident[EI_MAG0] != 0x7f)
 		dprintf(2, "Error: Not a valid ELF file: %s\n", elf_filename), closeffs(ff),
 exit(98);
 	printf("ELF Header:\n");
@@ -50,12 +105,12 @@ exit(98);
 );
 	printf("  Class:                             %s\n",
 elf_header.e_ident[EI_CLASS] == ELFCLASS64 ? "ELF64" : "ELF32");
-	printf("  Data:                              %s\n", elf_header.e_ident[EI_DATA
-] == ELFDATA2LSB ? "2's complement, little endian" : "unknown");
+	printf("  Data:                              %s\n",
+display_data(elf_header.e_ident));
 	printf("  Version:                           %d (current)\n",
 elf_header.e_ident[EI_VERSION]);
-	printf("  OS/ABI:                            %s\n", elf_header.e_ident
-[EI_OSABI] == ELFOSABI_SYSV ? "UNIX - System V" : "unknown");
+	printf("  OS/ABI:                            %s\n",
+display_osabi(elf_header.e_ident));
 	printf("  ABI Version:                       %d\n",
 elf_header.e_ident[EI_ABIVERSION]);
 	printf("  Type:                              %s (%s)\n",
