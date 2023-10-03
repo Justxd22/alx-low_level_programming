@@ -64,7 +64,7 @@ elf_header.e_type == ET_EXEC ? "EXEC" : (elf_header.e_type == ET_DYN ?
 elf_header.e_type == ET_EXEC ? "Executable file" : (elf_header.e_type ==
 ET_DYN ? "Shared object file" : "Unknown"));
 	printf("  Entry point address:               0x%lx\n", (unsigned long)
-elf_header.e_entry);
+(elf_header.e_entry & 0xFFFFFFFF));
 
 	closeffs(ff);
 }
