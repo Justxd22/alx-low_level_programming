@@ -49,14 +49,14 @@ int main(int ac, char *av[])
 
 	while ((bb = read(ff, buf, 1024)) > 0)
 	{
-		if (bb == -1)
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]),
-closeffs(ff, ft), exit(98);
 		bbw = write(ft, buf, bb);
 		if (bbw == -1)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]),
 closeffs(ff, ft), exit(99);
 	}
+	if (bb == -1)
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]),
+closeffs(ff, ft), exit(98);
 
 	closeffs(ff, ft);
 	return (0);
