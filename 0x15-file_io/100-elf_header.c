@@ -27,7 +27,7 @@ int closeffs(int ff)
  */
 void display_elf_header(const char *elf_filename)
 {
-	int ff;
+	int ff, i;
 	Elf64_Ehdr elf_header;
 	ssize_t rr;
 
@@ -48,7 +48,7 @@ exit(98);
 
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
-	for (int i = 0; i < EI_NIDENT; i++)
+	for (i = 0; i < EI_NIDENT; i++)
 		printf("%02x%c", elf_header.e_ident[i], i < EI_NIDENT - 1 ? ' ' : '\n'
 );
 	printf("  Class:                             %s\n",
@@ -77,10 +77,6 @@ elf_header.e_entry);
  */
 int main(int ac, char *av[])
 {
-	int ff, ft;
-	ssize_t bb, bbw;
-	char buf[1024];
-
 	if (ac != 2)
 		dprintf(2, "Usage: %s elf_filename\n", av[0]), exit(98);
 
