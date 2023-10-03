@@ -7,14 +7,17 @@
 
 
 /**
- * closeffs - close passed files
+ * closef - close passed files
  * @ff: file1
+ * @s: status
  * Return: 0
  */
-int closeffs(int ff)
+int closef(int ff, int s)
 {
 	if (close(ff) == -1)
 		dprintf(2, "Error: Can't close fd %d\n", ff), exit(100);
+	if (s)
+		exit(98);
 	return (0);
 }
 
@@ -92,12 +95,10 @@ void display_elf_header(const char *elf_filename)
 
 	rr = read(ff, &elf_header, sizeof(elf_header));
 	if (rr == -1)
-		dprintf(2, "Error: Can't read from file %s\n", elf_filename), closeffs(ff),
-exit(98);
+		dprintf(2, "Error: Can't read from file %s\n", elf_filename), closef(ff, 1);
 
 	if (elf_header.e_ident[EI_MAG0] != 0x7f)
-		dprintf(2, "Error: Not a valid ELF file: %s\n", elf_filename), closeffs(ff),
-exit(98);
+		dprintf(2, "Error: Not a valid ELF file: %s\n", elf_filename), closef(ff, 1);
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
@@ -107,8 +108,9 @@ exit(98);
 elf_header.e_ident[EI_CLASS] == ELFCLASS64 ? "ELF64" : "ELF32");
 	printf("  Data:                              %s\n",
 display_data(elf_header.e_ident));
-	printf("  Version:                           %d (current)\n",
-elf_header.e_ident[EI_VERSION]);
+	printf("  Version:                           %d %s\n",
+elf_header.e_ident[EI_VERSION], elf_header.e_ident[EI_VERSION] == EV_CURRENT ?
+"(current)" : "");
 	printf("  OS/ABI:                            %s\n",
 display_osabi(elf_header.e_ident));
 	printf("  ABI Version:                       %d\n",
@@ -121,7 +123,7 @@ ET_DYN ? "Shared object file" : "Unknown"));
 	printf("  Entry point address:               0x%lx\n", (unsigned long)
 (elf_header.e_entry & 0xFFFFFFFF));
 
-	closeffs(ff);
+	closef(ff, 0);
 }
 
 /**
