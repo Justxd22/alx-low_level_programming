@@ -4,6 +4,24 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
+
+/**
+ * closeffs - close passed files
+ * @f1: file1
+ * @f2: file2
+ * Return: 0
+ */
+int closeffs(int f1, int f2)
+{
+	if (close(f1) == -1)
+		fprintf(stderr, "Error: Can't close fd %d\n", f1), exit(100);
+
+	if (close(f2) == -1)
+		fprintf(stderr, "Error: Can't close fd %d\n", f2), exit(100);
+	return (0);
+}
+
+
 /**
  * main - cp files
  * @ac: args len
@@ -17,30 +35,29 @@ int main(int ac, char *av[])
 	char buf[1024];
 
 	if (ac <= 2)
-		dprintf(2, "Usage: cp file_from file_to"), exit(97);
+		fprintf(stderr, "Usage: cp file_from file_to"), exit(97);
 
 	ff = open(av[1], O_RDONLY);
 	if (ff == -1)
-		dprintf(2, "Error: Can't read from file %s\n", av[1]), exit(98);
+		fprintf(stderr, "Error: Can't read from file %s\n", av[1]), exit(98);
 
-	ft = open(av[2], O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, S_IRUSR | S_IWUSR
+	ft = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR
 | S_IRGRP | S_IWGRP | S_IROTH);
 	if (ft == -1)
-		dprintf(2, "Error: Can't write to %s\n", av[2]), exit(99);
+		fprintf(stderr, "Error: Can't write to %s\n", av[2]), exit(99);
 
 
 	while ((bb = read(ff, buf, 1024)) > 0)
 	{
 		bbw = write(ft, buf, bb);
-		if (bbw != bb)
-			dprintf(2, "Error: Can't write to %s\n", av[2]), exit(99);
+		if (bbw == -1)
+			fprintf(stderr, "Error: Can't write to %s\n", av[2]),
+closeffs(ff, ft), exit(99);
 	}
 
-	if (close(ff) == -1)
-		dprintf(2, "Error: Can't close fd %d\n", ff), exit(100);
-
-	if (close(ft) == -1)
-		dprintf(2, "Error: Can't close fd %d\n", ft), exit(100);
-
+	closeffs(ff, ft);
 	return (0);
 }
+
+
+
