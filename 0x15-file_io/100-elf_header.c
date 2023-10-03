@@ -40,7 +40,7 @@ void display_elf_header(const char *elf_filename)
 		dprintf(2, "Error: Can't read from file %s\n", elf_filename), closeffs(ff),
 exit(98);
 
-	if (rr < sizeof(Elf64_Ehdr))
+	if (rr < (ssize_t)sizeof(Elf64_Ehdr))
 	{
 		dprintf(2, "Error: Not a valid ELF file: %s\n", elf_filename), closeffs(ff);
 		exit(98);
