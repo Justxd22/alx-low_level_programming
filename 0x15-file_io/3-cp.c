@@ -35,7 +35,7 @@ int main(int ac, char *av[])
 	char buf[1024];
 
 	if (ac <= 2)
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to"), exit(97);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
 
 	ff = open(av[1], O_RDONLY);
 	if (ff == -1)
