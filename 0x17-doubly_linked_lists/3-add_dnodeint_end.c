@@ -2,8 +2,8 @@
 
 /**
  * add_dnodeint_end - adds a new node at the end
- * @h: dlistint_t
- *
+ * @head: dlistint_t head
+ * @n: new node int val
  * Return: address of the new element/ NULL
 **/
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
@@ -27,8 +27,8 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 		return (new);
 	}
 
-        while (temp->next != NULL)
-                temp = temp->next;
+	while (temp->next != NULL)
+		temp = temp->next;
 
 	temp->next = new;
 	new->prev = temp;
